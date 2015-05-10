@@ -1,0 +1,22 @@
+{
+  "name": "goodread-friends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "content.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "css-loader": "^0.12.0",
+    "gulp": "^3.8.11",
+    "gulp-util": "^3.0.4",
+    "node-libs-browser": "^0.5.0",
+    "style-loader": "^0.12.2",
+    "webpack": "^1.9.0",
+    "webpack-dev-server": "^1.8.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
