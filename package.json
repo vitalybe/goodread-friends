@@ -4,8 +4,11 @@
   "description": "",
   "main": "content.js",
   "dependencies": {
+    "react": "^0.13.3"
   },
   "devDependencies": {
+    "babel-core": "^5.2.17",
+    "babel-loader": "^5.0.0",
     "css-loader": "^0.12.0",
     "gulp": "^3.8.11",
     "gulp-util": "^3.0.4",

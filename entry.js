@@ -1,2 +1,5 @@
 require("./style.css");
-document.write(require("./content.js"));
+var React = require('react');
+var Hello = require('./hello');
+
+React.render(<Hello />, document.getElementById('content'));
