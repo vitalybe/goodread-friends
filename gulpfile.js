@@ -16,7 +16,8 @@ gulp.task("webpack-dev-server", function(callback) {
     // Start a webpack-dev-server
     new WebpackDevServer(webpack(myConfig), {
         stats: {
-            colors: true
+            colors: true,
+            cached: false
         }
     }).listen(8080, "localhost", function(err) {
         if(err) throw new gutil.PluginError("webpack-dev-server", err);
