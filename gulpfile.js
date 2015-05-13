@@ -15,6 +15,7 @@ gulp.task("webpack-dev-server", function(callback) {
 
     // Start a webpack-dev-server
     new WebpackDevServer(webpack(myConfig), {
+        hot: true,
         stats: {
             colors: true,
             cached: false
