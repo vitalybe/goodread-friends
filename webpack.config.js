@@ -4,7 +4,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
         'webpack/hot/only-dev-server',
-        "./src/app/app.js"
+        "./src/app/index.js"
     ],
     output: {
         path: __dirname,

@@ -1,6 +1,11 @@
 var React = require('react');
+var Router = require('react-router'); // or var Router = ReactRouter; in browsers
+var RouteHandler = Router.RouteHandler;
+
+var NavigationBar = require('./navigation-bar');
+
 module.exports = React.createClass({
-    displayName: 'HelloReact',
+    displayName: 'App',
     getInitialState() {
         return {yourName: ""};
     },
@@ -11,13 +16,8 @@ module.exports = React.createClass({
     render: function () {
         return (
             <div>
-                <div>
-                    <span>Enter your name: </span>
-                    <input ref="name" onChange={this.onInputChange}></input>
-                </div>
-                <div>
-                    <span>Welcome: {this.state.yourName}</span>
-                </div>
+                <NavigationBar />
+                <RouteHandler />
             </div>
         )
     }
