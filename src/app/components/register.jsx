@@ -30,9 +30,9 @@ module.exports = React.createClass({
                     <input type="password" placeholder="Repeat password" ref="password2" />
                     <input type="submit" value="Register" />
                 </form>
-                { this.state.validation &&
-                    <div>Validation problem: {this.state.validation}</div>
-                }
+                <If condition={this.state.validation}>
+                    <div>Validation problem: {this.state.validation}</div> 
+                </If>
             </div>
         )
     }
