@@ -1,12 +1,24 @@
 var React = require('react');
+var Reflux = require('reflux');
+var registerStore = require('../stores/registerStore');
+var actions = require('../actions');
 
 module.exports = React.createClass({
     displayName: 'Register',
+
+    mixins: [
+        Reflux.listenTo(registerStore, 'onRegisterStore')
+    ],
+
     getInitialState() {
         return {validation: null};
     },
 
-    handleSubmit(e) {
+    onRegisterStore() {
+        alert("onRegisterStore");
+    },
+
+    onSubmit(e) {
         e.preventDefault();
 
         var username = React.findDOMNode(this.refs.username).value;
@@ -18,20 +30,24 @@ module.exports = React.createClass({
         } else {
             this.setState({validation: null});
         }
+
+        actions.register().then(() => {
+            alert("promise finished");
+        });
     },
 
     render: function () {
         return (
             <div>
                 This is the registration page
-                <form className="commentForm" onSubmit={this.handleSubmit}>
+                <form className="commentForm" onSubmit={this.onSubmit}>
                     <input type="text" placeholder="Username" ref="username" />
                     <input type="password" placeholder="Password" ref="password" />
                     <input type="password" placeholder="Repeat password" ref="password2" />
                     <input type="submit" value="Register" />
                 </form>
                 <If condition={this.state.validation}>
-                    <div>Validation problem: {this.state.validation}</div> 
+                    <div>Validation problem: {this.state.validation}</div>
                 </If>
             </div>
         )
