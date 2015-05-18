@@ -1,9 +1,17 @@
 var React = require('react');
+var Reflux = require('reflux');
 var Router = require('react-router'); // or var Router = ReactRouter; in browsers
 var Link = Router.Link;
 
+var sessionStore = require('../stores/sessionStore');
+
+
 module.exports = React.createClass({
     displayName: 'NavigationBar',
+    mixins: [
+        Reflux.connect(sessionStore, "loggedIn")
+    ],
+
     getInitialState() {
         return { loggedIn: "Anonymous" };
     },

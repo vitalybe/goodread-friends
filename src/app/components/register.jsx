@@ -1,21 +1,12 @@
 var React = require('react');
 var Reflux = require('reflux');
-var registerStore = require('../stores/registerStore');
 var actions = require('../actions');
 
 module.exports = React.createClass({
     displayName: 'Register',
 
-    mixins: [
-        Reflux.listenTo(registerStore, 'onRegisterStore')
-    ],
-
     getInitialState() {
         return {validation: null};
-    },
-
-    onRegisterStore() {
-        alert("onRegisterStore");
     },
 
     onSubmit(e) {
@@ -31,8 +22,8 @@ module.exports = React.createClass({
             this.setState({validation: null});
         }
 
-        actions.register().then(() => {
-            alert("promise finished");
+        actions.register(username, password).then(() => {
+            alert("Register finished");
         });
     },
 
