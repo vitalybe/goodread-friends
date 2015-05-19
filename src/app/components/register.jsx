@@ -1,9 +1,13 @@
 var React = require('react');
 var Reflux = require('reflux');
 var actions = require('../actions');
+var sessionStore = require('../stores/sessionStore');
 
 module.exports = React.createClass({
     displayName: 'Register',
+    mixins: [
+        Reflux.connect(sessionStore, "session")
+    ],
 
     getInitialState() {
         return {validation: null};
@@ -22,9 +26,7 @@ module.exports = React.createClass({
             this.setState({validation: null});
         }
 
-        actions.register(username, password).then(() => {
-            alert("Register finished");
-        });
+        actions.register(username, password);
     },
 
     render: function () {
@@ -39,6 +41,9 @@ module.exports = React.createClass({
                 </form>
                 <If condition={this.state.validation}>
                     <div>Validation problem: {this.state.validation}</div>
+                </If>
+                <If condition={this.state.session.pending}>
+                    <div>SPINNER</div>
                 </If>
             </div>
         )

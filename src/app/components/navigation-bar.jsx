@@ -9,16 +9,13 @@ var sessionStore = require('../stores/sessionStore');
 module.exports = React.createClass({
     displayName: 'NavigationBar',
     mixins: [
-        Reflux.connect(sessionStore, "loggedIn")
+        Reflux.connect(sessionStore, "session")
     ],
 
-    getInitialState() {
-        return { loggedIn: "Anonymous" };
-    },
     render: function () {
         return (
             <div>
-                <div>Logged-in user: {this.state.loggedIn}</div>
+                <div>Logged-in user: {this.state.session.username}</div>
                 <ul>
                     <li><Link to="about">About</Link></li>
                     <li><Link to="login">Login</Link></li>
