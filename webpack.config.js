@@ -3,7 +3,7 @@ var webpack = require('webpack');
 module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:8080', // WebpackDevServer host and port
-        'webpack/hot/only-dev-server',
+        'webpack/hot/dev-server',
         "./src/app/index.js"
     ],
     output: {
@@ -19,7 +19,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loaders: ['react-hot', 'babel?{"plugins":["jsx-control-statements/babel"]}']
+                loaders: ['babel?{"plugins":["jsx-control-statements/babel"]}']
             }
         ]
     },
