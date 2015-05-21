@@ -17,6 +17,10 @@ module.exports = {
                 loader: "style!css" 
             },
             {
+                test: /\.less$/,
+                loader: "style!css!less"
+            },
+            {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loaders: ['react-hot', 'babel?{"plugins":["jsx-control-statements/babel"]}']

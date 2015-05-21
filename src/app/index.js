@@ -1,4 +1,4 @@
-require("./style.css");
+require("./style.less");
 
 var React = require('react');
 var Router = require('react-router');
