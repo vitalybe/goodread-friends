@@ -42,7 +42,7 @@ module.exports = React.createClass({
                 <If condition={this.state.validation}>
                     <div>Validation problem: {this.state.validation}</div>
                 </If>
-                <If condition={this.state.session.pending}>
+                <If condition={this.state.session.data.get('pending')}>
                     <div>SPINNER</div>
                 </If>
             </div>

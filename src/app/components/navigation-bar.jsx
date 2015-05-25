@@ -15,7 +15,7 @@ module.exports = React.createClass({
     render: function () {
         return (
             <div>
-                <div>Logged-in user: {this.state.session.username}</div>
+                <div>Logged-in user: {this.state.session.data.get('loggedIn')}</div>
                 <ul>
                     <li><Link to="about">About</Link></li>
                     <li><Link to="login">Login</Link></li>
