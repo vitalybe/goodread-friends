@@ -3,8 +3,8 @@
 var Reflux = require('reflux');
 var { Map } = require('immutable');
 var _ = require('lodash');
-var axios = require('axios');
 var actions = require('../actions');
+var userDataService = require('../services/userDataService');
 
 var sessionStore = Reflux.createStore({
 
@@ -29,9 +29,9 @@ var sessionStore = Reflux.createStore({
         this.data = this.data.update("pending", v => true);
         this.triggerImmutable();
 
-        axios.put('https://goodreads-friends.firebaseio.com/users.json', registrationData)
+        userDataService.createUser(registrationData)
             .then((response) => {
-                this.data = this.data.update("loggedIn", v => username);
+                this.data = this.data.update("loggedIn", v => Object.keys(response.data)[0]);
                 this.data = this.data.update("pending", v => false);
                 this.triggerImmutable();
             })
@@ -46,7 +46,7 @@ var sessionStore = Reflux.createStore({
         this.data = this.data.update("pending", v => true);
         this.triggerImmutable();
 
-        axios.get('https://goodreads-friends.firebaseio.com/users.json')
+        userDataService.getUser()
             .then((response) => {
 
                 this.data = this.data.update("loggedIn", v => username);

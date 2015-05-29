@@ -29,7 +29,10 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new webpack.NormalModuleReplacementPlugin(/DataService(\.js)?$/, function(result) {
+            result.request = result.request.replace(/(DataService)(\.js)?$/, '$1Fake$2');
+        })
     ],
     resolve: {
         extensions: ['', '.js', '.jsx']
